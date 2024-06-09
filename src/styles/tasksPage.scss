@@ -1,0 +1,75 @@
+.tasks-navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    .tasks-title {
+        font-size: 36px;
+        font-weight: bold;
+    }
+
+    .add-task-button {
+        background-color: rgb(50, 115, 255);
+        border-radius: 8px;
+        border: none;
+        color: white;
+        font-size: 14px;
+        font-weight: bold;
+        height: 40px;
+        outline: none;
+        padding: 0 16px;
+        margin-right: 8px;
+
+        &:hover {
+            cursor: pointer;
+            background-color: rgb(21, 95, 255);
+        }
+
+        &:focus-within {
+            outline: 1px solid black;
+            outline-offset: 2px;
+        }
+    }
+
+    .sign-out-button {
+        background-color: rgb(250, 31, 31);
+        border-radius: 8px;
+        border: none;
+        color: white;
+        font-size: 14px;
+        font-weight: bold;
+        height: 40px;
+        outline: none;
+        padding: 0 16px;
+
+        &:hover {
+            cursor: pointer;
+            background-color: rgb(218, 17, 17);
+        }
+
+        &:focus-within {
+            outline: 1px solid black;
+            outline-offset: 2px;
+        }
+    }
+}
+
+.task-list {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+}
+
+.no-tasks {
+    text-align: center;
+}
+
+@media (width <= 400px) {
+    .tasks-navbar {
+        .tasks-title {
+            font-size: 24px;
+        }
+    }
+}
