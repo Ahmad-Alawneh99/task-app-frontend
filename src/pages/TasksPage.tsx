@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import PageLayout from "../components/PageLayout";
 import { useNavigate } from "react-router-dom";
 import Task from "../components/Task";
-import { TaskData } from "../shared/interfaces.d";
+import { TaskData, User } from "../shared/interfaces.d";
 import { getAuthCookie } from "../shared/utils";
 
 
 const TasksPage = () => {
 	const [tasks, setTasks] = useState<TaskData[]>([]);
+	const [user, setUser] = useState<Partial<User>>({});
 	const navigate = useNavigate();
 
 	const navigateToAddTaskPage = () => {
@@ -31,16 +32,26 @@ const TasksPage = () => {
 		}
 
 		const prepareData = async () => {
-			const response = await fetch('http://localhost:3030/tasks/getAll', {
+
+			const options: RequestInit = {
 				headers: {
 					'Content-Type': 'application/json',
 				},
 				credentials: 'include',
-			});
+			};
 
-			const data = await response.json();
+			const [userResponse, tasksResponse] = await Promise.all([
+				await fetch('http://localhost:3030/users/me', options),
+				await fetch('http://localhost:3030/tasks/getAll', options),
+			]);
 
-			setTasks(data.tasks);
+			const [userData, tasksData] = await Promise.all([
+				await userResponse.json(),
+				await tasksResponse.json(),
+			]);
+
+			setTasks(tasksData.tasks);
+			setUser(userData.user);
 		}
 
 		prepareData();
@@ -49,6 +60,9 @@ const TasksPage = () => {
 	return (
 		<PageLayout>
 			<div className="tasks-container">
+				<div className="user-info">
+					<p>Welcome back, {user.name}</p>
+				</div>
 				<div className="tasks-navbar">
 					<p className="tasks-title">Your tasks</p>
 					<div className="control-buttons">
