@@ -21,7 +21,7 @@ const TasksPage = () => {
 	}
 
 	const onTaskDelete = (taskId: string) => {
-		setTasks(tasks.filter((task) => task.id !== taskId));
+		setTasks((existingTasks) => existingTasks.filter((task) => task.id !== taskId));
 	}
 
 	useEffect(() => {

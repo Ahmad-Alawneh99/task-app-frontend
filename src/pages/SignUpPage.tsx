@@ -49,19 +49,22 @@ const SignUpPage = () => {
 
 	return (
 		<PageLayout>
-			<form className="form-container">
-				<p className="form-title">Sign up</p>
-				<input className="simple-input" type="text" title="Name" placeholder="Name" ref={nameRef}/>
-				<input className="simple-input" type="email" title="Email" placeholder="Email" ref={emailRef}/>
-				<input className="simple-input" type="password" title="Password" placeholder="Password" ref={passwordRef}/>
-				<button
-					type="button"
-					className="form-submit-button"
-					disabled={isSubmitting}
-					onClick={handleSubmit}
-				>Sign up</button>
-				{error.isError && <p className="form-error">{error.message}</p>}
-			</form>
+			<div>
+				<form className="form-container">
+					<p className="form-title">Sign up</p>
+					<input className="simple-input" type="text" title="Name" placeholder="Name" ref={nameRef}/>
+					<input className="simple-input" type="email" title="Email" placeholder="Email" ref={emailRef}/>
+					<input className="simple-input" type="password" title="Password" placeholder="Password" ref={passwordRef}/>
+					<button
+						type="button"
+						className="form-submit-button"
+						disabled={isSubmitting}
+						onClick={handleSubmit}
+					>Sign up</button>
+					{error.isError && <p className="form-error">{error.message}</p>}
+				</form>
+				<p className="cta">Have an account? <a href="/sign-in">Sign in here</a></p>
+			</div>
 		</PageLayout>
 	);
 }
