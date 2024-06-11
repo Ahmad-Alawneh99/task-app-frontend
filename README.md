@@ -2,7 +2,7 @@
 
 ## Requirements
 * NodeJS v20.9 or above
-* Ensure that the backend project is running locally before running this application: s
+* Ensure that the backend project is running locally before running this application: https://github.com/Ahmad-Alawneh99/task-app-backend
 
 ### Running the application
 * Install the needed packages by using the command `npm install`
